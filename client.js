@@ -9,7 +9,10 @@ const connect = function(){
   conn.on('connect', () => {
     console.log('connection successful!');
     conn.write("Name: JEL");
-  });
+    // setInterval(() => {
+    //   conn.write("Move: up");
+    //   }, 50);
+    // });
 
   conn.on('data', (data) => {
     console.log(data);
