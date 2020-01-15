@@ -1,5 +1,7 @@
 let connection;
 
+const KEYS = require('./constants').KEY_BINDINGS;
+
 const setupInput = function(conn){
   connection = conn;
   const stdin = process.stdin;
@@ -11,32 +13,15 @@ const setupInput = function(conn){
 }
 
 const handleUserInput = function(key){
+    for(keyAction of Object.keys(KEYS)){
+      if(key === keyAction){
+        connection.write(KEYS[keyAction]);
+      }
+    }
     if(key === 'x'){
       console.log('Game over!');
       process.exit();
     }
-    if(key === 'w'){
-      connection.write('Move: up');
-    }
-    if(key === 'a'){
-      connection.write('Move: left');      
-    }
-    if(key === 's'){
-      connection.write('Move: down');      
-    }
-    if(key === 'd'){
-      connection.write('Move: right');      
-    }
-    if(key === 'z'){
-      connection.write('Say: Yippee!');      
-    }
-    if(key === 'c'){
-      connection.write('Say: Close call!');      
-    }
-    if(key === 'q'){
-      connection.write('Say: Delicious!');      
-    }
-
 }
 
 module.exports = {
