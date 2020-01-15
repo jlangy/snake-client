@@ -6,6 +6,11 @@ const connect = function(){
     port: 50541
   });
 
+  conn.on('connect', () => {
+    console.log('connection successful!');
+    conn.write("Name: JEL");
+  });
+
   conn.on('data', (data) => {
     console.log(data);
   })
