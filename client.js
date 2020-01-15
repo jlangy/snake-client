@@ -12,14 +12,14 @@ const connect = function(){
     // setInterval(() => {
     //   conn.write("Move: up");
     //   }, 50);
-    // });
+  });
+
 
   conn.on('data', (data) => {
     console.log(data);
-  })
+  });
 
   conn.setEncoding('utf8');
-
   return conn;
 }
 
